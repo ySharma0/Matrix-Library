@@ -6,12 +6,12 @@ int main(){
     Matrix matrix(3, 2);
     Matrix matrix2(2,3);
 
-    for(int i = 0; i < 5; i++){
+    for(int i = 0; i < 3; i++){
 
-        for(int j = 0; j < 3; j++){
+        for(int j = 0; j < 2; j++){
 
-          //  *(*(matrix.matrix + i) + j) = j;
-         //   *(*(matrix2.matrix + j) + i) = j;
+            *(*(matrix.matrix + i) + j) = j + 1 + i;
+            *(*(matrix2.matrix + j) + i) = j + i;
 
         }
 

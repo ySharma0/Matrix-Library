@@ -63,10 +63,11 @@ class Matrix{
                 // (matrix one rows) x (matrix two cols)
                 
                 for(int i = 0; i < rows; i++){
-                    for(int j = 0; j < cols; j++){
+                    for(int j = 0; j < matrix2.cols; j++){
                         *(*(multiplied.matrix + i) + j) = 0;
                         for(int k = 0; k < cols; k++){
-                            *(*(multiplied.matrix + i) + j) += *(*(matrix + j) + k)  *  *(*(matrix2.matrix + j) + k);
+                            
+                            *(*(multiplied.matrix + i) + j) += *(*(matrix + i) + k)  *  *(*(matrix2.matrix + k) + j);
                         }
 
                     }
@@ -95,6 +96,7 @@ class Matrix{
                 //ends each row of the matrix
                 std::cout<<std::endl;
             } 
+            std::cout<<std::endl;
         }
 
 };
