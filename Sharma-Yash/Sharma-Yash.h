@@ -4,7 +4,7 @@ class Matrix{
     //unsigned because rows and collumns cannot be of negative value
    
   
-     private:
+     public:
         unsigned int cols;
         unsigned int rows;
         int** matrix;
@@ -20,13 +20,14 @@ class Matrix{
             matrix = new int* [rows];
 
             for(int i = 0; i < rows; i++){
-                
+                std::cout<<std::endl;
                 //allocate n collumns
                 *(matrix + i) = new int [cols];
 
                 for(int j = 0; j < cols; j++){
                     //fills the matrix with 0s
-                    *((matrix + i) + j) = 0;
+                    *(*(matrix + i) + j) = 0;
+                   
 
                 }
             }
@@ -34,15 +35,15 @@ class Matrix{
         }
 
         //function for the transposing of a matrix
-        Matrix transpose(Matrix matrix){
+        Matrix transpose(){
 
-            Matrix transposed(matrix.rows, matrix.cols);
+            Matrix transposed(rows, cols);
 
-            for(int i = 0; i < matrix.rows; i++){
-                for(int j = 0; j < matrix.cols; j++){
+            for(int i = 0; i < rows; i++){
+                for(int j = 0; j < cols; j++){
 
-                    //migrates the values fron the original matrix to the transposed matrix
-                    *(*(transposed.matrix + j) + i) = *(*(matrix.matrix + i) + j);
+                    //migrates the values from the original matrix to the transposed matrix
+                    *(*(transposed.matrix + j) + i) = *(*(matrix + i) + j);
 
                 }
             } 
@@ -52,24 +53,24 @@ class Matrix{
             return transposed;
         }
 
-        Matrix print(Matrix matrix){
+        void print(){
 
-            Matrix transposed(matrix.rows, matrix.cols);
+            
 
-            for(int i = 0; i < matrix.rows; i++){
-                for(int j = 0; j < matrix.cols; j++){
+            for(int i = 0; i < rows; i++){
+                for(int j = 0; j < cols; j++){
 
-                    //migrates the values fron the original matrix to the transposed matrix
-                    std::cout<< (*(*(matrix.matrix + i) + j)) <<" ";
+                    //prints the values from the original matrix 
+                    std::cout<< *(*(matrix + i) + j) <<" ";
 
                 }
-                std::cout<<""<<std::endl;
+                std::cout<<std::endl;
             } 
-
-            //std: :cout<<"hello world"<<std::endl;
         }
 
 };
+
+
 
 
 
