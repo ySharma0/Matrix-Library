@@ -37,7 +37,7 @@ class Matrix{
         //function for the transposing of a matrix
         Matrix transpose(){
 
-            Matrix transposed(rows, cols);
+            Matrix transposed(cols, rows);
 
             for(int i = 0; i < rows; i++){
                 for(int j = 0; j < cols; j++){
@@ -53,9 +53,37 @@ class Matrix{
             return transposed;
         }
 
-        void print(){
+        Matrix multiply(Matrix matrix2){
+            //to multiply matrices, the number of cols of the first matrix
+            //should equal the number of rows of the second matrix
+           
+            Matrix multiplied(rows, matrix2.cols);
+            if(cols == matrix2.rows){
+                //the resulting matrix will be of size
+                // (matrix one rows) x (matrix two cols)
+                
+                for(int i = 0; i < rows; i++){
+                    for(int j = 0; j < cols; j++){
+                        *(*(multiplied.matrix + i) + j) = 0;
+                        for(int k = 0; k < cols; k++){
+                            *(*(multiplied.matrix + i) + j) += *(*(matrix + j) + k)  *  *(*(matrix2.matrix + j) + k);
+                        }
 
-            
+                    }
+                } 
+                
+
+
+            }
+
+            else{
+                std::cout<<"error"<<std::endl;;
+            }
+            return multiplied;
+
+        }
+
+        void print(){
 
             for(int i = 0; i < rows; i++){
                 for(int j = 0; j < cols; j++){
@@ -64,6 +92,7 @@ class Matrix{
                     std::cout<< *(*(matrix + i) + j) <<" ";
 
                 }
+                //ends each row of the matrix
                 std::cout<<std::endl;
             } 
         }
