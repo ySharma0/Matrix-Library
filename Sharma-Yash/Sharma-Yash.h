@@ -4,7 +4,7 @@ class Matrix{
     //unsigned because rows and collumns cannot be of negative value
    
   
-     public:
+     private:
         unsigned int cols;
         unsigned int rows;
         int** matrix;
@@ -32,6 +32,14 @@ class Matrix{
             }
 
         }
+
+        /*~Matrix(){
+            //deconstructor to delete the matrix
+            for(int i = 0; i < rows; i ++){
+                delete (matrix+i); 
+            }
+            delete matrix;
+        }*/
 
         //function for the transposing of a matrix
         Matrix transpose(){
@@ -98,6 +106,50 @@ class Matrix{
                 std::cout<<std::endl;
             } 
             std::cout<<std::endl;
+        }
+
+        Matrix operator *(Matrix matrix2){
+            //to multiply matrices, the number of cols of the first matrix
+            //should equal the number of rows of the second matrix
+           
+            Matrix multiplied(rows, matrix2.cols);
+            if(cols == matrix2.rows){
+                //the resulting matrix will be of size
+                // (matrix one rows) x (matrix two cols)
+                
+                for(int i = 0; i < rows; i++){
+                    for(int j = 0; j < matrix2.cols; j++){
+                        *(*(multiplied.matrix + i) + j) = 0;
+                        for(int k = 0; k < cols; k++){
+                            
+                            //performs dot product for the matrix multiplication
+                            *(*(multiplied.matrix + i) + j) += *(*(matrix + i) + k)  *  *(*(matrix2.matrix + k) + j);
+                        }
+
+                    }
+                } 
+                
+
+
+            }
+
+            else{
+                std::cout<<"error: matrices can't be multiplied"<<std::endl;;
+            }
+            return multiplied;
+
+        }
+
+
+
+        int** getMatrix(){
+            return matrix;
+        }
+        int getRows(){
+            return rows;
+        }
+        int getCols(){
+            return cols;
         }
 
 };

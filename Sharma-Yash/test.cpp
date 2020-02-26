@@ -3,11 +3,14 @@
 
 int main(){
 
-    Matrix mat(3, 3);
-    Matrix mat2(3, 3);
+    Matrix m(3,3);
+    Matrix b(3,3);
 
-    mat = mat.transpose();
-    mat.print();
+    Matrix c(3,3);
+
+    c = m * b;
+
+    c.print();
 
     return 0;
 }
