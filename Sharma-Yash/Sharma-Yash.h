@@ -20,7 +20,6 @@ class Matrix{
             matrix = new int* [rows];
 
             for(int i = 0; i < rows; i++){
-                std::cout<<std::endl;
                 //allocate n collumns
                 *(matrix + i) = new int [cols];
 
@@ -53,6 +52,7 @@ class Matrix{
             return transposed;
         }
 
+        //mulitiplication functionality
         Matrix multiply(Matrix matrix2){
             //to multiply matrices, the number of cols of the first matrix
             //should equal the number of rows of the second matrix
@@ -67,6 +67,7 @@ class Matrix{
                         *(*(multiplied.matrix + i) + j) = 0;
                         for(int k = 0; k < cols; k++){
                             
+                            //performs dot product for the matrix multiplication
                             *(*(multiplied.matrix + i) + j) += *(*(matrix + i) + k)  *  *(*(matrix2.matrix + k) + j);
                         }
 
@@ -78,7 +79,7 @@ class Matrix{
             }
 
             else{
-                std::cout<<"error"<<std::endl;;
+                std::cout<<"error: matrices can't be multiplied"<<std::endl;;
             }
             return multiplied;
 
