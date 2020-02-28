@@ -19,9 +19,19 @@ int main(){
     m.print();
     b.print();
 
-    c = m * b;
+     for(int i = 0; i < c.getRows ; i++){
+                //std::cout<<i;
+                delete c.getMatrix()[i]; 
+            }
+            delete c.getMatrix();
+
+
+    
+    c = m.multiply(b);
 
     c.print();
+   
+
 
     return 0;
 }

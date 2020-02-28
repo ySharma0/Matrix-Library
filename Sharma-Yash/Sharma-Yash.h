@@ -33,13 +33,14 @@ class Matrix{
 
         }
 
-        /*~Matrix(){
+        void deleteIT(){
             //deconstructor to delete the matrix
-            for(int i = 0; i < rows; i ++){
-                delete (matrix+i); 
+            for(int i = 0; i < rows ; i++){
+                //std::cout<<i;
+                delete[] matrix[i]; 
             }
-            delete matrix;
-        }*/
+            delete[] matrix;
+        }
 
         //function for the transposing of a matrix
         Matrix transpose(){
