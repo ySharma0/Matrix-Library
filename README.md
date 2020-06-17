@@ -1,3 +1,3 @@
 # Matrix-Library
-## This is a matrix library 
+## This is a library for matrix operations
 ## It current contains mulitiplication and transposition capabilities
